@@ -37,8 +37,6 @@ const migrateOstadRecording = async () => {
 
 		recordings = JSON.parse(recordings);
 
-		recordings = recordings.splice(0, 200);
-
 		for (let i = 0; i < recordings.length; i++) {
 			try {
 				let video = recordings[i];
@@ -46,7 +44,7 @@ const migrateOstadRecording = async () => {
 				video = formatVideo(video);
 
 				const videoExist = await getVideo({ guid: video.guid });
-				console.log(videoExist._id);
+
 				if (videoExist) {
 					console.log("Video already exists");
 					continue;
@@ -66,11 +64,6 @@ const migrateOstadRecording = async () => {
 						const size =
 							libraryExist.storage +
 							video.platform_data.bunny_data.response_object.storageSize;
-
-						console.log({
-							count,
-							size,
-						});
 
 						const update = await updateLibrary(
 							{
