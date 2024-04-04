@@ -54,66 +54,66 @@ const migrateOstadRecording = async () => {
 
 				// clg
 
-				// const create = await createVideo(video);
+				const create = await createVideo(video);
 
-				// if (create) {
-				// 	const libraryExist = await getLibrary({ _id: video.library });
+				if (create) {
+					const libraryExist = await getLibrary({ _id: video.library });
 
-				// 	const shelfExist = await getShelf({ _id: video.shelf });
+					const shelfExist = await getShelf({ _id: video.shelf });
 
-				// 	if (libraryExist) {
-				// 		const count = libraryExist.video_count + 1;
-				// 		const size =
-				// 			libraryExist.storage +
-				// 			video.platform_data.bunny_data.response_object.storageSize;
+					if (libraryExist) {
+						const count = libraryExist.video_count + 1;
+						const size =
+							libraryExist.storage +
+							video.platform_data.bunny_data.response_object.storageSize;
 
-				// 		console.log({
-				// 			count,
-				// 			size,
-				// 		});
+						console.log({
+							count,
+							size,
+						});
 
-				// 		const update = await updateLibrary(
-				// 			{
-				// 				_id: video.library,
-				// 			},
-				// 			{
-				// 				video_count: count,
-				// 				storage: size,
-				// 			}
-				// 		);
+						const update = await updateLibrary(
+							{
+								_id: video.library,
+							},
+							{
+								video_count: count,
+								storage: size,
+							}
+						);
 
-				// 		if (update) {
-				// 			console.log(" updated library");
-				// 		} else {
-				// 			console.log("Library update failed");
-				// 		}
-				// 	}
+						if (update) {
+							console.log(" updated library");
+						} else {
+							console.log("Library update failed");
+						}
+					}
 
-				// 	if (shelfExist) {
-				// 		const count = shelfExist.video_count + 1;
-				// 		const size =
-				// 			shelfExist.storage +
-				// 			video.platform_data.bunny_data.response_object.storageSize;
+					if (shelfExist) {
+						const count = shelfExist.video_count + 1;
+						const size =
+							shelfExist.storage +
+							video.platform_data.bunny_data.response_object.storageSize;
 
-				// 		const update = await updateShelf(
-				// 			{
-				// 				_id: video.shelf,
-				// 			},
-				// 			{
-				// 				video_count: count,
-				// 				storage: size,
-				// 			}
-				// 		);
+						const update = await updateShelf(
+							{
+								_id: video.shelf,
+							},
+							{
+								video_count: count,
+								storage: size,
+							}
+						);
 
-				// 		if (update) {
-				// 			console.log(" updated shelf");
-				// 		} else {
-				// 			console.log("Shelf update failed");
-				// 		}
-				// 	}
-				// } else {
-				// 	console.log("Video creation failed");
-				// }
+						if (update) {
+							console.log(" updated shelf");
+						} else {
+							console.log("Shelf update failed");
+						}
+					}
+				} else {
+					console.log("Video creation failed");
+				}
 			} catch (error) {
 				console.log(error);
 			}
